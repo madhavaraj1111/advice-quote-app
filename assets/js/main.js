@@ -1,13 +1,14 @@
 // https://api.adviceslip.com/advice
 
-const url = "https://api.adviceslip.com/advice";
+const url = `https://api.adviceslip.com/advice?${new Date().getTime()}`;
 const quoteEl = document.querySelector("#quote");
 const btnEl = document.querySelector("#buttonQuote");
-const divEl=document.querySelector("quoteDiv");
-
+const divEl = document.querySelector("quoteDiv");
 
 btnEl.addEventListener("click", () => {
- window.location.reload();
+  if (quoteEl.innerText) {
+    location.reload();
+  }
 });
 
 async function adviceData() {
@@ -28,5 +29,3 @@ adviceData().then((data) => {
     console.error("No advice found in the response.");
   }
 });
-
-
